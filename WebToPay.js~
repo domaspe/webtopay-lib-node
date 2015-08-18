@@ -11,7 +11,7 @@ function WebToPay(cred) {
     this.version = '1.6';
     this.test = '1';
     this.payUrl = 'https://www.paysera.com/pay/';
-    this.xmlUrl = 'https://www.paysera.com/new/api/paymentMethods/';
+    this.xmlUrl = 'https://www.paysera.com/pay/';
 
 
 }
