@@ -53,17 +53,4 @@ WebToPay.prototype.createUrl = function(req) {
 // export the class
 module.exports = WebToPay;
 
-var f = new WebToPay({ 'projectId' : '40712', 'signPassword' : '3f722c39358fed674747c4197d6d6687' });
-
-    f.orderid = '123';
-    f.accepturl = 'http://test.lt';
-    f.cancelurl = 'http://test.lt';
-    f.callbackurl = 'http://test.lt';
-
-
-
-console.log(f.createUrl(f.buildRequest()));
-console.log(f);
-
-
 
