@@ -1,0 +1,27 @@
+{
+  "name": "paysera-nodejs",
+  "version": "0.0.1",
+  "description": "Paysera payment gateway plugin for node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzonatan/paysera-nodejs.git"
+  },
+  "keywords": [
+    "paysera",
+    "nodejs"
+  ],
+  "author": "Tomas Kasparaitis <t.kasparaitis@evp.lt>",
+  "contributors": [
+    "Rokas Brazdzionis <rokas.brazdzionis@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.paysera.com",
+  "devDependencies": {
+    "mocha": "^2.3.3",
+    "should": "^7.1.0"
+  }
+}
