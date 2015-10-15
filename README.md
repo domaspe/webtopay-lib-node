@@ -1,6 +1,8 @@
 # paysera-nodejs
 [Paysera](http://www.paysera.com) payment gateway plugin for node.js
 
+[![Build Status](https://travis-ci.org/dzonatan/paysera-nodejs.svg?branch=master)](https://travis-ci.org/dzonatan/paysera-nodejs) [![Dependency Status](https://gemnasium.com/dzonatan/paysera-nodejs.svg)](https://gemnasium.com/dzonatan/paysera-nodejs) [![Coverage Status](https://coveralls.io/repos/dzonatan/paysera-nodejs/badge.svg?branch=master&service=github)](https://coveralls.io/github/dzonatan/paysera-nodejs?branch=master)
+
 ## Usage
 
 Install this package as a npm dependency:
