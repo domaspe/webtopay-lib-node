@@ -41,8 +41,7 @@ describe('Paysera', function() {
     result.should.have.property('currency', orderParams.currency);
   });
 
-
-  it('should correctly stringify and encode params', function() {
+  it('should correctly encode params', function() {
     // Arrange
     var orderParams = {
       orderid: 123,
@@ -53,9 +52,24 @@ describe('Paysera', function() {
     };
 
     // Act
-    var result = paysera.stringifyAndEncodeWithBase64(orderParams);
+    var result = paysera.encode(orderParams);
 
     // Assert
     result.should.be.exactly('b3JkZXJpZD0xMjMmcF9lbWFpbD10ZXN0JTQwdGVzdC5jb20mcF9maXJzdG5hbWU9Sm9obiUyMFNtaXRoJmFtb3VudD0xNDUmY3VycmVuY3k9RVVS');
+  });
+
+  it('should correctly decode data', function() {
+    // Arrange
+    var encodedData = 'b3JkZXJpZD0xMjMmcF9lbWFpbD10ZXN0JTQwdGVzdC5jb20mcF9maXJzdG5hbWU9Sm9obiUyMFNtaXRoJmFtb3VudD0xNDUmY3VycmVuY3k9RVVS';
+
+    // Act
+    var result = paysera.decode(encodedData);
+
+    // Assert
+    result.should.have.property('orderid', '123');
+    result.should.have.property('p_email', 'test@test.com');
+    result.should.have.property('p_firstname', 'John Smith');
+    result.should.have.property('amount', '145');
+    result.should.have.property('currency', 'EUR');
   });
 });
