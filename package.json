@@ -1,6 +1,6 @@
 {
   "name": "paysera-nodejs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Paysera payment gateway plugin for node.js",
   "main": "index.js",
   "scripts": {
