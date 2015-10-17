@@ -49,13 +49,14 @@ var urlToGo = paysera.buildRequestUrl(params);
 
 Check if callback from paysera is valid:
 ```javascript
-var request; // the request data you got from callback, it should have three params (data, ss1 and ss2)
+var request = { data: ..., ss1: ... }; // the request data you got from paysera callback
 
 var isValid = paysera.checkCallback(request);
 if (isValid) {
-  // Callback seems valid.
-
-  // Update the order depending on callback parameters like orderid, status,
+  // Since callback seems valid decode callback data
+  var order = paysera.decode(request);
+  // Your code ... to update order status
+  
   // Don't forget to return "OK" as the response.
 }
 ```
