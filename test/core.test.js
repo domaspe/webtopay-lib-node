@@ -72,4 +72,16 @@ describe('Paysera', function() {
     result.should.have.property('amount', '145');
     result.should.have.property('currency', 'EUR');
   });
+
+  it('should correctly build url', function() {
+    // Arrange
+    var data = 'my-data';
+    var ss1 = 'signature';
+
+    // Act
+    var result = paysera.createUrl(data, ss1);
+
+    // Assert
+    result.should.be.exactly(paysera.payUrl + '?data=' + data + '&sign=' + ss1);
+  });
 });
