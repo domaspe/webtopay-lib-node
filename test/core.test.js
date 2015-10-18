@@ -41,9 +41,9 @@ describe('Paysera', function() {
     result.should.have.property('currency', orderParams.currency);
   });
 
-  it('should correctly encode params', function() {
+  it('should correctly encode data', function() {
     // Arrange
-    var orderParams = {
+    var data = {
       orderid: 123,
       p_email: 'test@test.com',
       p_firstname: 'John Smith',
@@ -52,25 +52,29 @@ describe('Paysera', function() {
     };
 
     // Act
-    var result = paysera.encode(orderParams);
+    var mergedData = paysera.mergeParams(data);
+    var encodedData = paysera.encode(data);
 
     // Assert
-    result.should.be.exactly('b3JkZXJpZD0xMjMmcF9lbWFpbD10ZXN0JTQwdGVzdC5jb20mcF9maXJzdG5hbWU9Sm9obiUyMFNtaXRoJmFtb3VudD0xNDUmY3VycmVuY3k9RVVS');
+    encodedData.should.not.be.exactly(mergedData);
   });
 
   it('should correctly decode data', function() {
     // Arrange
-    var encodedData = 'b3JkZXJpZD0xMjMmcF9lbWFpbD10ZXN0JTQwdGVzdC5jb20mcF9maXJzdG5hbWU9Sm9obiUyMFNtaXRoJmFtb3VudD0xNDUmY3VycmVuY3k9RVVS';
+    var data = {
+      orderid: 123,
+      p_email: 'test@test.com',
+      p_firstname: 'John Smith',
+      amount: 145,
+      currency: 'EUR'
+    };
 
     // Act
+    var encodedData = paysera.encode(data);
     var result = paysera.decode(encodedData);
 
     // Assert
-    result.should.have.property('orderid', '123');
-    result.should.have.property('p_email', 'test@test.com');
-    result.should.have.property('p_firstname', 'John Smith');
-    result.should.have.property('amount', '145');
-    result.should.have.property('currency', 'EUR');
+    encodedData.should.not.be.exactly(data);
   });
 
   it('should correctly build url', function() {
@@ -83,5 +87,19 @@ describe('Paysera', function() {
 
     // Assert
     result.should.be.exactly(paysera.payUrl + '?data=' + data + '&sign=' + ss1);
+  });
+
+  it('should correctly check callback', function() {
+    // Arrange
+    var request = {
+      data: 'encoded-data-here'
+    };
+
+    // Act
+    request.ss1 = paysera.sign(request.data);
+    var result = paysera.checkCallback(request);
+
+    // Assert
+    result.should.be.exactly(true);
   });
 });
