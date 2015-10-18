@@ -102,4 +102,25 @@ describe('Paysera', function() {
     // Assert
     result.should.be.exactly(true);
   });
+
+  // This one may seem too much hard-coded or inpropper from unit-testing ideology
+  // but using in this way it will ensure that proper (as specified in paysera.com)
+  // techniques and algorithms are used to build paysera url
+  it('should correctly build url', function() {
+    // Arrange
+    var data = {
+      orderid: 123,
+      p_email: 'test@test.com',
+      p_firstname: 'John Smith',
+      amount: 145,
+      currency: 'EUR'
+    };
+    var correctUrl = 'https://www.paysera.com/pay/?data=cHJvamVjdGlkPVhYWCZzaWduX3Bhc3N3b3JkPVlZWSZhY2NlcHR1cmw9aHR0cCUzQSUyRiUyRm15YWNjZXB0LnVybCZjYW5jZWx1cmw9aHR0cCUzQSUyRiUyRm15Y2FuY2VsLnVybCZjYWxsYmFja3VybD1odHRwJTNBJTJGJTJGbXljYWxsYmFjay51cmwmdGVzdD0xJm9yZGVyaWQ9MTIzJnBfZW1haWw9dGVzdCU0MHRlc3QuY29tJnBfZmlyc3RuYW1lPUpvaG4lMjBTbWl0aCZhbW91bnQ9MTQ1JmN1cnJlbmN5PUVVUg==&sign=a468c8258b95789bd737f26b99b11058';
+
+    // Act
+    var urlToGo = paysera.buildRequestUrl(data);
+
+    // Assert
+    urlToGo.should.be.exactly(correctUrl);
+  });
 });
