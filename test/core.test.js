@@ -58,6 +58,25 @@ describe('Paysera', function() {
     // Assert
     encodedData.should.not.be.exactly(mergedData);
   });
+  
+  it('should override default config', function() { 
+    // Arrange
+    var defaultConfig = {
+      projectid: 'XXX',
+      callbackurl: 'http://mycallback.url'
+    };
+    var data = {
+      callbackurl: 'http://mycallback.url',
+    };
+
+    // Act
+    var pays = new Paysera(config);
+    var mergedData = pays.mergeParams(data);
+
+    // Assert
+    mergedData.projectid.should.be.exactly(defaultConfig.projectid);
+    mergedData.callbackurl.should.be.exactly(data.callbackurl);
+  });
 
   it('should correctly decode data', function() {
     // Arrange
