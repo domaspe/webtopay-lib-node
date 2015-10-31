@@ -66,7 +66,7 @@ describe('Paysera', function() {
       callbackurl: 'http://mycallback.url'
     };
     var data = {
-      callbackurl: 'http://mycallback.url',
+      callbackurl: 'http://mycallback.url/with-id',
     };
 
     // Act
