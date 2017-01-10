@@ -54,7 +54,7 @@ var request = { data: ..., ss1: ... }; // the request data you got from paysera 
 var isValid = paysera.checkCallback(request);
 if (isValid) {
   // Since callback seems valid decode callback data
-  var order = paysera.decode(request);
+  var order = paysera.decode(request.data);
   // Your code ... to update order status
   
   // Don't forget to return "OK" as the response.
