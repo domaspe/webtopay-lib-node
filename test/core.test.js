@@ -30,7 +30,7 @@ describe('Paysera', function() {
 
     // Assert
     result.should.have.property('projectid', config.projectid);
-    result.should.have.property('sign_password', config.sign_password);
+    result.should.not.have.property('sign_password', config.sign_password);
     result.should.have.property('accepturl', config.accepturl);
     result.should.have.property('cancelurl', config.cancelurl);
     result.should.have.property('callbackurl', config.callbackurl);
