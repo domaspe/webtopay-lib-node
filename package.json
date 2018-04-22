@@ -19,7 +19,7 @@
   "contributors": [
     "Rokas Brazdzionis <rokas.brazdzionis@gmail.com>"
   ],
-  "license": "MIT",
+  "license": "Unlicense",
   "homepage": "https://www.paysera.com",
   "devDependencies": {
     "coveralls": "^2.11.4",
