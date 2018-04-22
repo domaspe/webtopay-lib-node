@@ -30,7 +30,7 @@ describe('Paysera', function() {
 
     // Assert
     result.should.have.property('projectid', config.projectid);
-    result.should.have.property('sign_password', config.sign_password);
+    result.should.not.have.property('sign_password', config.sign_password);
     result.should.have.property('accepturl', config.accepturl);
     result.should.have.property('cancelurl', config.cancelurl);
     result.should.have.property('callbackurl', config.callbackurl);
@@ -134,7 +134,7 @@ describe('Paysera', function() {
       amount: 145,
       currency: 'EUR'
     };
-    var correctUrl = 'https://www.paysera.com/pay/?data=cHJvamVjdGlkPVhYWCZzaWduX3Bhc3N3b3JkPVlZWSZhY2NlcHR1cmw9aHR0cCUzQSUyRiUyRm15YWNjZXB0LnVybCZjYW5jZWx1cmw9aHR0cCUzQSUyRiUyRm15Y2FuY2VsLnVybCZjYWxsYmFja3VybD1odHRwJTNBJTJGJTJGbXljYWxsYmFjay51cmwmdGVzdD0xJm9yZGVyaWQ9MTIzJnBfZW1haWw9dGVzdCU0MHRlc3QuY29tJnBfZmlyc3RuYW1lPUpvaG4lMjBTbWl0aCZhbW91bnQ9MTQ1JmN1cnJlbmN5PUVVUg==&sign=a468c8258b95789bd737f26b99b11058';
+    var correctUrl = 'https://www.paysera.com/pay/?data=cHJvamVjdGlkPVhYWCZhY2NlcHR1cmw9aHR0cCUzQSUyRiUyRm15YWNjZXB0LnVybCZjYW5jZWx1cmw9aHR0cCUzQSUyRiUyRm15Y2FuY2VsLnVybCZjYWxsYmFja3VybD1odHRwJTNBJTJGJTJGbXljYWxsYmFjay51cmwmdGVzdD0xJm9yZGVyaWQ9MTIzJnBfZW1haWw9dGVzdCU0MHRlc3QuY29tJnBfZmlyc3RuYW1lPUpvaG4lMjBTbWl0aCZhbW91bnQ9MTQ1JmN1cnJlbmN5PUVVUg==&sign=cce0555a8a333f5c9dca02e2e4994d50';
 
     // Act
     var urlToGo = paysera.buildRequestUrl(data);
