@@ -1,7 +1,7 @@
 # paysera-nodejs
 [Paysera](http://www.paysera.com) payment gateway plugin for node.js
 
-[![Build Status](https://travis-ci.org/dzonatan/paysera-nodejs.svg?branch=master)](https://travis-ci.org/dzonatan/paysera-nodejs) [![Dependency Status](https://gemnasium.com/dzonatan/paysera-nodejs.svg)](https://gemnasium.com/dzonatan/paysera-nodejs) [![Coverage Status](https://coveralls.io/repos/dzonatan/paysera-nodejs/badge.svg?branch=master&service=github)](https://coveralls.io/github/dzonatan/paysera-nodejs?branch=master) [![npm version](https://badge.fury.io/js/paysera-nodejs.svg)](https://badge.fury.io/js/paysera-nodejs)
+[![Build Status](https://travis-ci.org/dzonatan/paysera-nodejs.svg?branch=master)](https://travis-ci.org/dzonatan/paysera-nodejs) [![Coverage Status](https://coveralls.io/repos/dzonatan/paysera-nodejs/badge.svg?branch=master&service=github)](https://coveralls.io/github/dzonatan/paysera-nodejs?branch=master) [![npm version](https://badge.fury.io/js/paysera-nodejs.svg)](https://badge.fury.io/js/paysera-nodejs)
 
 ## Usage
 
