@@ -16,10 +16,6 @@ export interface ICallback {
   ss2: string;
 }
 
-export interface IParsedUrlQuery {
+export interface IUrlQuery {
   [key: string]: string | string[];
-}
-
-export interface IParsedUrlQueryInput {
-  [key: string]: NodeJS.PoorMansUnknown;
 }

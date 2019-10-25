@@ -1,9 +1,9 @@
 import querystring from 'querystring';
 import crypto from 'crypto';
 import cert from './cert';
-import { IParsedUrlQueryInput } from '../types';
+import { IUrlQuery } from '../types';
 
-export function encode(params: IParsedUrlQueryInput) {
+export function encode(params: IUrlQuery) {
   const data = querystring.stringify(params);
   const encodedUrl = Buffer.from(data).toString('base64');
 
