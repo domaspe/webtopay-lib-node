@@ -1,4 +1,4 @@
-import { IConfig, ICallback, IParsedUrlQuery } from '../types';
+import { IConfig, ICallback, IUrlQuery } from '../types';
 export default class WebToPay {
     private defaultConfig;
     private password;
@@ -6,5 +6,5 @@ export default class WebToPay {
     constructor(config: IConfig);
     buildRequestUrl(params: any): string;
     validateSignature(callback: ICallback): boolean;
-    decode(data: string): IParsedUrlQuery;
+    decode(data: string): IUrlQuery;
 }
