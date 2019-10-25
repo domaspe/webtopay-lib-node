@@ -1,6 +1,6 @@
 {
-  "name": "paysera-nodejs",
-  "version": "1.0.2",
+  "name": "webtopay-lib-node",
+  "version": "1.0.0",
   "description": "Paysera payment gateway plugin for node.js",
   "main": "index.js",
   "engines": {
@@ -14,15 +14,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dzonatan/paysera-nodejs.git"
+    "url": "git+https://github.com/domaspe/webtopay-lib-node.git"
   },
   "keywords": [
     "paysera",
-    "nodejs"
+    "nodejs",
+    "webtopay"
   ],
   "author": "Tomas Kasparaitis <t.kasparaitis@evp.lt>",
   "contributors": [
-    "Rokas Brazdzionis <rokas.brazdzionis@gmail.com>"
+    "Rokas Brazdzionis <rokas.brazdzionis@gmail.com>",
+    "Domas Petkevicius <domas.petkevicius@gmail.com>"
   ],
   "license": "Unlicense",
   "homepage": "https://www.paysera.com",
@@ -32,14 +34,16 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.7",
     "chai": "^4.2.0",
-    "coveralls": "^2.11.4",
-    "istanbul": "^0.3.22",
     "mocha": "^2.5.3",
     "prettier": "^1.18.2",
-    "should": "^7.1.0",
     "ts-node": "^8.4.1",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "@fidm/x509": "^1.2.1",
+    "@types/node-rsa": "^1.0.0",
+    "node-rsa": "^1.0.6"
   }
 }

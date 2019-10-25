@@ -1,7 +1,8 @@
-const querystring = require('querystring');
-const crypto = require('crypto');
+import querystring, { ParsedUrlQueryInput } from 'querystring';
+import crypto from 'crypto';
+import cert from './cert';
 
-export function encode(params: object) {
+export function encode(params: ParsedUrlQueryInput) {
   const data = querystring.stringify(params);
   const encodedUrl = Buffer.from(data).toString('base64');
 
@@ -17,4 +18,8 @@ export function sign(data: string, password: string): string {
 
 export function createUrl(url: string, data: string, signature: string) {
   return `${url}?data=${data}&sign=${signature}`;
+}
+
+export function checkSignature(data: string, signature: string) {
+  return cert.publicKey.verify(Buffer.from(data), Buffer.from(signature), 'sha1');
 }

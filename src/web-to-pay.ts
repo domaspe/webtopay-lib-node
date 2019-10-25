@@ -1,5 +1,5 @@
-import { encode, sign, createUrl } from './utils';
-const querystring = require('querystring');
+import { encode, sign, createUrl, checkSignature } from './utils';
+import querystring from 'querystring';
 
 interface IConfig {
   projectid: string;
@@ -13,6 +13,7 @@ interface IConfig {
 interface ICallback {
   data: string;
   ss1: string;
+  ss2: string;
 }
 
 export default class WebToPay {
@@ -36,16 +37,13 @@ export default class WebToPay {
     return createUrl(this.payUrl, encodedParams, signature);
   }
 
-  public checkCallback(callback: ICallback) {
-    const ss1 = sign(callback.data, this.password);
-    return callback.ss1 === ss1;
+  public validateSignature(callback: ICallback) {
+    return callback.ss1 === sign(callback.data, this.password); //  && checkSignature(callback.data, callback.ss2);
   }
 
-  public decode(encodedData: string): object {
-    const prettyfiedEncodedData = encodedData.replace('_', '/').replace('-', '+');
+  public decode(data: string) {
+    const prettyfiedEncodedData = data.replace('_', '/').replace('-', '+');
     const decodedUrl = Buffer.from(prettyfiedEncodedData, 'base64').toString('ascii');
-    const params = querystring.parse(decodedUrl);
-
-    return params;
+    return querystring.parse(decodedUrl);
   }
 }

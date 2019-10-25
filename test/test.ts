@@ -46,10 +46,11 @@ describe('WebToPay', () => {
   it('should correctly check callback', () => {
     const request = {
       data: 'encoded-data-here',
-      ss1: utils.sign('encoded-data-here', 'YYY')
+      ss1: utils.sign('encoded-data-here', 'YYY'),
+      ss2: ''
     };
 
-    const result = webToPay.checkCallback(request);
+    const result = webToPay.validateSignature(request);
     expect(result).to.equal(true);
   });
 });
