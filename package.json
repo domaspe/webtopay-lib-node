@@ -7,8 +7,10 @@
     "node": ">=6.9.5"
   },
   "scripts": {
-    "test": "mocha -R spec test/*.test.js",
-    "test-travis": "./node_modules/istanbul/lib/cli.js cover _mocha -- -R spec test/*.test.js"
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "npx mocha -r ts-node/register test/test.ts"
   },
   "repository": {
     "type": "git",
@@ -25,9 +27,19 @@
   "license": "Unlicense",
   "homepage": "https://www.paysera.com",
   "devDependencies": {
+    "@types/chai": "^4.2.4",
+    "@types/crypto-js": "^3.1.43",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.7",
+    "chai": "^4.2.0",
     "coveralls": "^2.11.4",
     "istanbul": "^0.3.22",
-    "mocha": "^2.3.3",
-    "should": "^7.1.0"
+    "mocha": "^2.5.3",
+    "prettier": "^1.18.2",
+    "should": "^7.1.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.6.4"
   }
 }
