@@ -1,6 +1,6 @@
 {
   "name": "webtopay-lib-node",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Paysera payment gateway plugin for node.js",
   "main": "lib/index.js",
   "engines": {
