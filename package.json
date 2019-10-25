@@ -3,6 +3,9 @@
   "version": "1.0.2",
   "description": "Paysera payment gateway plugin for node.js",
   "main": "index.js",
+  "engines": {
+    "node": ">=6.9.5"
+  },
   "scripts": {
     "test": "mocha -R spec test/*.test.js",
     "test-travis": "./node_modules/istanbul/lib/cli.js cover _mocha -- -R spec test/*.test.js"
