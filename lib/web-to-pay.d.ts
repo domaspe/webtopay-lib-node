@@ -1,18 +1,4 @@
-/// <reference types="node" />
-import querystring from 'querystring';
-interface IConfig {
-    projectid: string;
-    password: string;
-    accepturl: string;
-    cancelurl: string;
-    callbackurl: string;
-    test?: number;
-}
-interface ICallback {
-    data: string;
-    ss1: string;
-    ss2: string;
-}
+import { IConfig, ICallback, IParsedUrlQuery } from '../types';
 export default class WebToPay {
     private defaultConfig;
     private password;
@@ -20,6 +6,5 @@ export default class WebToPay {
     constructor(config: IConfig);
     buildRequestUrl(params: any): string;
     validateSignature(callback: ICallback): boolean;
-    decode(data: string): querystring.ParsedUrlQuery;
+    decode(data: string): IParsedUrlQuery;
 }
-export {};

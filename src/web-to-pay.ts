@@ -1,20 +1,6 @@
 import { encode, sign, createUrl, checkSignature } from './utils';
 import querystring from 'querystring';
-
-interface IConfig {
-  projectid: string;
-  password: string;
-  accepturl: string;
-  cancelurl: string;
-  callbackurl: string;
-  test?: number;
-}
-
-interface ICallback {
-  data: string;
-  ss1: string;
-  ss2: string;
-}
+import { IConfig, ICallback, IParsedUrlQuery } from '../types';
 
 export default class WebToPay {
   private defaultConfig: any;
@@ -41,7 +27,7 @@ export default class WebToPay {
     return callback.ss1 === sign(callback.data, this.password); //  && checkSignature(callback.data, callback.ss2);
   }
 
-  public decode(data: string) {
+  public decode(data: string): IParsedUrlQuery {
     const prettyfiedEncodedData = data.replace('_', '/').replace('-', '+');
     const decodedUrl = Buffer.from(prettyfiedEncodedData, 'base64').toString('ascii');
     return querystring.parse(decodedUrl);
