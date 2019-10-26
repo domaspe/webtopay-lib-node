@@ -1,4 +1,4 @@
-import { encode, sign, createUrl, checkSignature } from './utils';
+import { encode, sign, createUrl, validateSignature, decodeUriSafe, encodeUriSafe } from './utils';
 import querystring from 'querystring';
 import { IConfig, ICallback, IUrlQuery } from '../types';
 
@@ -17,19 +17,26 @@ export default class WebToPay {
 
   public buildRequestUrl(params: any) {
     const requestParams = { ...this.defaultConfig, ...params };
-    const encodedParams = encode(requestParams);
-    const signature = sign(encodedParams, this.password);
 
-    return createUrl(this.payUrl, encodedParams, signature);
+    const dataBase64 = encode(requestParams);
+    const data = encodeUriSafe(dataBase64);
+
+    const signatureHex = sign(data, this.password);
+    const signature = encodeUriSafe(signatureHex);
+
+    return createUrl(this.payUrl, data, signature);
   }
 
   public validateSignature(callback: ICallback) {
-    return callback.ss1 === sign(callback.data, this.password); //  && checkSignature(callback.data, callback.ss2);
+    const data = callback.data;
+    const ss1Hex = decodeUriSafe(callback.ss1);
+    const ss2Base64 = decodeUriSafe(callback.ss2);
+    return ss1Hex === sign(data, this.password) && validateSignature(data, ss2Base64);
   }
 
   public decode(data: string): IUrlQuery {
-    const prettyfiedEncodedData = data.replace('_', '/').replace('-', '+');
-    const decodedUrl = Buffer.from(prettyfiedEncodedData, 'base64').toString('ascii');
+    const dataBase64 = decodeUriSafe(data);
+    const decodedUrl = Buffer.from(dataBase64, 'base64').toString('ascii');
     return querystring.parse(decodedUrl);
   }
 }

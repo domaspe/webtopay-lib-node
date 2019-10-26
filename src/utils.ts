@@ -17,10 +17,18 @@ export function sign(data: string, password: string): string {
     .digest('hex');
 }
 
+export function decodeUriSafe(str: string) {
+  return str.replace('_', '/').replace('-', '+');
+}
+
+export function encodeUriSafe(str: string) {
+  return str.replace('/', '_').replace('+', '-');
+}
+
 export function createUrl(url: string, data: string, signature: string) {
   return `${url}?data=${data}&sign=${signature}`;
 }
 
-export function checkSignature(data: string, signature: string) {
-  return cert.publicKey.verify(Buffer.from(data), Buffer.from(signature), 'sha1');
+export function validateSignature(data: string, signatureBase64: string) {
+  return cert.publicKey.verify(Buffer.from(data, 'ascii'), Buffer.from(signatureBase64, 'base64'), 'sha1');
 }
