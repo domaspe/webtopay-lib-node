@@ -1,10 +1,10 @@
-import { IConfig, ICallback, IUrlQuery } from '../types';
+import { Config, Callback, WebToPayRequest, WebToPayNotification } from '../types';
 export default class WebToPay {
     private defaultConfig;
     private password;
     private payUrl;
-    constructor(config: IConfig);
-    buildRequestUrl(params: any): string;
-    validateSignature(callback: ICallback): boolean;
-    decode(data: string): IUrlQuery;
+    constructor(config: Config);
+    buildRequestUrl(params: WebToPayRequest): string;
+    validateSignature(callback: Callback): boolean;
+    decode(data: string): WebToPayNotification;
 }

@@ -1,5 +1,5 @@
-import { IUrlQuery } from '../types';
-export declare function encode(params: IUrlQuery): string;
+import { UrlQuery } from '../types';
+export declare function encode(params: UrlQuery): string;
 export declare function sign(data: string, password: string): string;
 export declare function decodeUriSafe(str: string): string;
 export declare function encodeUriSafe(str: string): string;
