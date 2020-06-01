@@ -51,7 +51,7 @@ export interface WebToPayNotification {
   orderid: string;
   lang: string;
   amount: string;
-  currenc: string;
+  currency: string;
   payment: string;
   country: string;
   paytext: string;
